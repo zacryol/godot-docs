@@ -15,6 +15,7 @@ sys.path.append(os.path.abspath("_extensions"))
 extensions = [
     "sphinx_tabs.tabs",
     "notfound.extension",
+    "sphinxext.opengraph",
 ]
 
 # Warning when the Sphinx Tabs extension is used with unknown
@@ -54,6 +55,9 @@ on_rtd = os.environ.get("READTHEDOCS", None) == "True"
 if not on_rtd:
     notfound_urls_prefix = ''
 
+# Specify the site name for the Open Graph extension.
+ogp_site_name = "Godot Engine documentation"
+
 if not os.getenv("SPHINX_NO_GDSCRIPT"):
     extensions.append("gdscript")
 
@@ -75,7 +79,7 @@ master_doc = "index"
 # General information about the project
 project = "Godot Engine"
 copyright = (
-    "2014-2020, Juan Linietsky, Ariel Manzur and the Godot community (CC-BY 3.0)"
+    "2014-2021, Juan Linietsky, Ariel Manzur and the Godot community (CC-BY 3.0)"
 )
 author = "Juan Linietsky, Ariel Manzur and the Godot community"
 

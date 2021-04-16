@@ -51,11 +51,11 @@ Setting up the buildsystem
 -  Install the necessary SDK components in this folder:
 
     -  Accept the SDK component licenses by running the following command 
-       from the root of the SDK directory, then answering all the prompts with ``y``:
+       where ``android_sdk_path`` is the path to the Android SDK, then answering all the prompts with ``y``:
 
     ::
 
-        tools/bin/sdkmanager --licenses
+        tools/bin/sdkmanager --sdk_root=<android_sdk_path> --licenses
 
     -  Complete setup by running the following command where ``android_sdk_path`` is the path to the Android SDK.
 
@@ -112,6 +112,12 @@ The resulting APK will be located at ``bin/android_release.apk``.
 
 
 The resulting APK will be located at ``bin/android_debug.apk``.
+
+
+.. seealso::
+
+    If you want to enable Vulkan validation layers, see
+    :ref:`Vulkan validation layers on Android<doc_vulkan_validation_layers-android>`.
 
 Adding support for x86 devices
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
