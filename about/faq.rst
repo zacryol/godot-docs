@@ -101,7 +101,7 @@ you, check out the :ref:`GDScript scripting guide <doc_gdscript>`.
 
 There are several reasons to use GDScript--especially when you are prototyping, in
 alpha/beta stages of your project, or are not creating the next AAA title--but the
-most salient reason is the overall **reduction of complexity.**
+most salient reason is the overall **reduction of complexity**.
 
 The original intent of creating a tightly integrated, custom scripting language for
 Godot was two-fold: first, it reduces the amount of time necessary to get up and running
@@ -211,7 +211,7 @@ Why does Godot aim to keep its core feature set small?
 ------------------------------------------------------
 
 Godot intentionally does not include features that can be implemented by add-ons
-unless they are used very often. One exemple of this would be advanced
+unless they are used very often. One example of this would be advanced
 artificial intelligence functionality.
 
 There are several reasons for this:
@@ -243,9 +243,9 @@ There are several reasons for this:
 
 For all the reasons above, we have to be selective of what we can accept as core
 functionality in Godot. This is why we are aiming to move some core
-functionality to officially supported add-ons in future versions of Godot. In
-terms of binary size, this also has the advance of making you pay only for what
-you actually use in your project. (In the meantime, you can
+functionality to officially supported add-ons in future versions of Godot.
+In terms of binary size, this also has the advantage of making you pay only for
+what you actually use in your project. (In the meantime, you can
 :ref:`compile custom export templates with unused features disabled <doc_optimizing_for_size>`
 to optimize the distribution size of your project.)
 
@@ -361,6 +361,8 @@ developer experiences as a whole.
 Bonus points for bringing screenshots, concrete numbers, test cases, or example
 projects (if applicable).
 
+.. _doc_faq_non_game_applications:
+
 Is it possible to use Godot to create non-game applications?
 ------------------------------------------------------------
 
@@ -378,6 +380,8 @@ Check out `Material Maker <https://github.com/RodZill4/material-maker>`__ and
 `Pixelorama <https://github.com/Orama-Interactive/Pixelorama>`__ for examples of
 open source applications made with Godot.
 
+.. _doc_faq_use_godot_as_library:
+
 Is it possible to use Godot as a library?
 -----------------------------------------
 
@@ -391,8 +395,30 @@ engine instead. Keep in mind rendering engines usually have smaller communities
 compared to Godot. This will make it more difficult to find answers to your
 questions.
 
-Why does Godot not use STL (Standard Template Library)
-------------------------------------------------------
+What user interface toolkit does Godot use?
+-------------------------------------------
+
+Godot does not use a standard :abbr:`GUI (Graphical User Interface)` toolkit
+like GTK, Qt or wxWidgets. Instead, Godot uses its own user interface toolkit,
+rendered using OpenGL ES or Vulkan. This toolkit is exposed in the form of
+Control nodes, which are used to render the editor (which is written in C++).
+These Control nodes can also be used in projects from any scripting language
+supported by Godot.
+
+This custom toolkit makes it possible to benefit from hardware acceleration and
+have a consistent appearance across all platforms. On top of that, it doesn't
+have to deal with the LGPL licensing caveats that come with GTK or Qt. Lastly,
+this means Godot is "eating its own dog food" since the editor itself is one of
+the most complex users of Godot's UI system.
+
+This custom UI toolkit :ref:`can't be used as a library <doc_faq_use_godot_as_library>`,
+but you can still
+:ref:`use Godot to create non-game applications by using the editor <doc_faq_non_game_applications>`.
+
+.. _doc_faq_why_not_stl:
+
+Why does Godot not use STL (Standard Template Library)?
+-------------------------------------------------------
 
 Like many other libraries (Qt as an example), Godot does not make use of
 STL. We believe STL is a great general purpose library, but we had special
@@ -436,7 +462,7 @@ removed at run-time to dynamically add and remove behaviors.
 More information about Godot's design choices can be found in
 `this article <https://godotengine.org/article/why-isnt-godot-ecs-based-game-engine>`__.
 
-Why does Godot not force users to implement DoD (Data oriented Design)?
+Why does Godot not force users to implement DoD (Data-oriented Design)?
 -----------------------------------------------------------------------
 
 While Godot internally for a lot of the heavy performance tasks attempts

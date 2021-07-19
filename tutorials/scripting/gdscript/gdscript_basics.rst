@@ -28,7 +28,7 @@ Example of GDScript
 -------------------
 
 Some people can learn better by taking a look at the syntax, so
-here's a simple example of how GDScript looks.
+here's an example of how GDScript looks.
 
 ::
 
@@ -1006,6 +1006,29 @@ boolean expression. In this case, ternary-if expressions come in handy::
     var x = [value] if [expression] else [value]
     y += 3 if y < 10 else -1
 
+Ternary-if expressions can be nested to handle more than 2 cases. When nesting
+ternary-if expressions, it is recommended to wrap the complete expression over
+multiple lines to preserve readability::
+
+    var count = 0
+
+    var fruit = (
+            "apple" if count == 2
+            else "pear" if count == 1
+            else "banana" if count == 0
+            else "orange"
+    )
+    print(fruit)  # banana
+
+    # Alternative syntax with backslashes instead of parentheses (for multi-line expressions).
+    # Less lines required, but harder to refactor.
+    var fruit_alt = \
+            "apple" if count == 2 \
+            else "pear" if count == 1 \
+            else "banana" if count == 0 \
+            else "orange"
+    print(fruit_alt)  # banana
+
 while
 ^^^^^
 
@@ -1318,7 +1341,7 @@ the function name with the attribute operator::
         return super.overriding() # This calls the method as defined in the base class.
 
 
-Class Constructor
+Class constructor
 ^^^^^^^^^^^^^^^^^
 
 The class constructor, called on class instantiation, is named ``_init``. If you
@@ -1364,7 +1387,7 @@ There are a few things to keep in mind here:
    in to ``Idle.gd``.
 4. If ``Idle.gd``'s ``_init`` constructor takes 0 arguments, it still needs to pass some value
    to the ``State.gd`` base class, even if it does nothing. This brings us to the fact that you
-   can pass expressions to the base constructor as well, not just variables. eg.::
+   can pass expressions to the base constructor as well, not just variables, e.g.::
 
     # Idle.gd
 

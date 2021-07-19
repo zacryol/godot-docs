@@ -61,9 +61,6 @@ ogp_site_name = "Godot Engine documentation"
 if not os.getenv("SPHINX_NO_GDSCRIPT"):
     extensions.append("gdscript")
 
-if not os.getenv("SPHINX_NO_SEARCH"):
-    extensions.append("sphinx_search.extension")
-
 if not os.getenv("SPHINX_NO_DESCRIPTIONS"):
     extensions.append("godot_descriptions")
 
@@ -187,13 +184,20 @@ html_static_path = ["_static"]
 html_extra_path = ["robots.txt"]
 
 # These paths are either relative to html_static_path
-# or fully qualified paths (eg. https://...)
+# or fully qualified paths (e.g. https://...)
 html_css_files = [
+    'css/algolia.css',
+    'https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css',
     "css/custom.css",
 ]
 
+if not on_rtd:
+    html_css_files.append("css/dev.css")
+
 html_js_files = [
     "js/custom.js",
+    ('https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js', {'defer': 'defer'}),
+    ('js/algolia.js', {'defer': 'defer'})
 ]
 
 # Output file base name for HTML help builder
